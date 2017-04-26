@@ -1,0 +1,172 @@
+<html>
+<head>
+<title>try1.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: #999999; font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,128); font-weight: bold; }
+.s1 { color: rgb(0,0,0); }
+.s2 { color: rgb(128,128,128); font-style: italic; }
+.s3 { color: rgb(0,128,128); font-weight: bold; }
+.s4 { color: rgb(0,0,255); }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+try1.py</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">from </span><span class="s1">tkinter </span><span class="s0">import </span><span class="s1">* 
+</span><span class="s0">import </span><span class="s1">random 
+</span><span class="s0">import </span><span class="s1">linecache 
+ 
+</span><span class="s2">#Questions for first box</span><span class="s1"> 
+OPTIONS1 = [ 
+    </span><span class="s3">&quot;In what city or town does your nearest sibling live?&quot;</span><span class="s1">, 
+    </span><span class="s3">&quot;What was the last name of your fifth grade teacher?&quot;</span><span class="s1">, 
+    </span><span class="s3">&quot;What was the name of your second dog/cat/goldfish/etc?&quot;</span><span class="s1">, 
+    </span><span class="s3">&quot;Where were you when you had your first kiss?&quot;</span><span class="s1">, 
+    </span><span class="s3">&quot;Custom Answer&quot;</span><span class="s1">, 
+    </span><span class="s3">&quot;Random&quot;</span><span class="s1"> 
+] 
+</span><span class="s2">#Questions for second box</span><span class="s1"> 
+OPTIONS2 = [ 
+    </span><span class="s3">&quot;When you were young, what did you want to be when you grew up?&quot;</span><span class="s1">, 
+    </span><span class="s3">&quot;What is your oldest cousin's first and last name?&quot;</span><span class="s1">, 
+    </span><span class="s3">&quot;What is your youngest brother's/sister's birthday?&quot;</span><span class="s1">, 
+    </span><span class="s3">&quot;What was the name of your elementary / primary school?&quot;</span><span class="s1">, 
+    </span><span class="s3">&quot;Custom Answer&quot;</span><span class="s1">, 
+    </span><span class="s3">&quot;Random&quot;</span><span class="s1"> 
+] 
+ 
+</span><span class="s2"># STRING =''.join(map(randUpper, STRING))</span><span class="s1"> 
+</span><span class="s0">def </span><span class="s1">randUpper(command): 
+    </span><span class="s0">if </span><span class="s1">random.random() &gt; </span><span class="s4">0.5</span><span class="s1">: 
+        </span><span class="s0">return </span><span class="s1">command.upper() 
+    </span><span class="s0">return </span><span class="s1">command.lower() 
+ 
+</span><span class="s0">def </span><span class="s1">getRandomWord(): 
+    line_num1 = random.randint(</span><span class="s4">0</span><span class="s1">, </span><span class="s4">58109</span><span class="s1">)  </span><span class="s2"># Choose random integer of lines on file</span><span class="s1"> 
+    </span><span class="s0">return </span><span class="s1">linecache.getline(</span><span class="s3">'wordlist'</span><span class="s1">, line_num1)[:-</span><span class="s4">1</span><span class="s1">] </span><span class="s2">#Get that random integer</span><span class="s1"> 
+ 
+</span><span class="s0">def </span><span class="s1">setRandom(entry): 
+    entry.delete(</span><span class="s4">0</span><span class="s1">,END) 
+    entry.insert(</span><span class="s4">0</span><span class="s1">, getRandomWord()) 
+ 
+</span><span class="s0">def </span><span class="s1">make1337(): 
+    leetlist = { </span><span class="s2">#Letters to change</span><span class="s1"> 
+        </span><span class="s3">'a'</span><span class="s1">:</span><span class="s3">'4'</span><span class="s1">, 
+        </span><span class="s3">'e'</span><span class="s1">:</span><span class="s3">'3'</span><span class="s1">, 
+        </span><span class="s3">'g'</span><span class="s1">:</span><span class="s3">'6'</span><span class="s1">, 
+        </span><span class="s3">'i'</span><span class="s1">:</span><span class="s3">'1'</span><span class="s1">, 
+        </span><span class="s3">'o'</span><span class="s1">:</span><span class="s3">'0'</span><span class="s1">, 
+        </span><span class="s3">'s'</span><span class="s1">:</span><span class="s3">'5'</span><span class="s1">, 
+        </span><span class="s3">'t'</span><span class="s1">:</span><span class="s3">'7'</span><span class="s1"> 
+    } 
+    </span><span class="s0">global </span><span class="s1">newPass 
+    newPass = password1[</span><span class="s4">0</span><span class="s1">] 
+    </span><span class="s0">for </span><span class="s1">i </span><span class="s0">in </span><span class="s1">password1[</span><span class="s4">1</span><span class="s1">:]: 
+        </span><span class="s0">if </span><span class="s1">i </span><span class="s0">in </span><span class="s1">leetlist: 
+            </span><span class="s0">if </span><span class="s1">random.random() &gt; </span><span class="s4">0.5</span><span class="s1">: 
+                newPass += leetlist[i] 
+            </span><span class="s0">else</span><span class="s1">: 
+                newPass += i 
+        </span><span class="s0">else</span><span class="s1">: 
+            newPass += i 
+ 
+ 
+ 
+</span><span class="s2">#Main Window</span><span class="s1"> 
+</span><span class="s0">def </span><span class="s1">window(): 
+ 
+    </span><span class="s2">#Commands</span><span class="s1"> 
+ 
+    </span><span class="s0">def </span><span class="s1">OptionMenu_SelectionEvent1(event): </span><span class="s2">#When option menu one is changed</span><span class="s1"> 
+ 
+        check_for_rand1 = initialOpt1.get() </span><span class="s2">#Check for choice</span><span class="s1"> 
+ 
+        </span><span class="s0">if </span><span class="s1">check_for_rand1 == </span><span class="s3">&quot;Random&quot;</span><span class="s1">: </span><span class="s2">#If option menu one is random selection</span><span class="s1"> 
+            setRandom(entry1) 
+        </span><span class="s0">else</span><span class="s1">: 
+            </span><span class="s0">pass</span><span class="s1"> 
+ 
+    </span><span class="s0">def </span><span class="s1">OptionMenu_SelectionEvent2(event): </span><span class="s2">#When option menu two is changed</span><span class="s1"> 
+ 
+        check_for_rand2 = initialOpt2.get() </span><span class="s2">#Check for choice</span><span class="s1"> 
+ 
+        </span><span class="s0">if </span><span class="s1">check_for_rand2 == </span><span class="s3">&quot;Random&quot;</span><span class="s1">: </span><span class="s2">#If option menu two is random selection</span><span class="s1"> 
+            setRandom(entry2) 
+        </span><span class="s0">else</span><span class="s1">: 
+            </span><span class="s0">pass</span><span class="s1"> 
+ 
+    </span><span class="s0">def </span><span class="s1">done_and_done(): 
+        newWin = Tk() 
+        newWin.title(</span><span class="s3">&quot;Your new password is: &quot;</span><span class="s1">) 
+ 
+        text1 = entry1.get() 
+        text2 = entry2.get() 
+ 
+        </span><span class="s0">global </span><span class="s1">password1 
+        password1 = text1 + text2 
+        password1 = password1.replace(</span><span class="s3">&quot; &quot;</span><span class="s1">, </span><span class="s3">&quot;&quot;</span><span class="s1">) 
+        password1 = </span><span class="s3">''</span><span class="s1">.join(map(randUpper, password1)) 
+        make1337() 
+        theLabel = Label(newWin, text=</span><span class="s3">'Your password is: '</span><span class="s1">) 
+        theLabel.pack(side=TOP) 
+        finalPass = Label(newWin, text=newPass) 
+        finalPass.pack() 
+ 
+        </span><span class="s2">#Make copy to clip button</span><span class="s1"> 
+ 
+        </span><span class="s0">def </span><span class="s1">CopyIt(): 
+            newWin.clipboard_clear() 
+            newWin.clipboard_append(newPass) 
+        </span><span class="s2">#Create Button</span><span class="s1"> 
+        clippybutton = Button(newWin, text=</span><span class="s3">'Copy to Clipboard?'</span><span class="s1">, command=CopyIt) 
+        clippybutton.pack(side=BOTTOM) 
+ 
+ 
+ 
+ 
+ 
+    </span><span class="s2">#Initialize the Main Window</span><span class="s1"> 
+ 
+    root = Tk() 
+    root.title(</span><span class="s3">&quot;Passwords for all!&quot;</span><span class="s1">) 
+ 
+    </span><span class="s2">#Initial Options for Drop/Option Menus</span><span class="s1"> 
+    </span><span class="s0">global </span><span class="s1">initialOpt1 
+    </span><span class="s0">global </span><span class="s1">initialOpt2 
+    initialOpt1 = StringVar(root) 
+    initialOpt1.set(</span><span class="s3">'Choose One'</span><span class="s1">) 
+    initialOpt2 = StringVar(root) 
+    initialOpt2.set(</span><span class="s3">'Choose One'</span><span class="s1">) 
+ 
+    </span><span class="s2">#Insert Widgets</span><span class="s1"> 
+ 
+    drop1 = OptionMenu(root, initialOpt1, *OPTIONS1, command=OptionMenu_SelectionEvent1) 
+    drop1.pack() </span><span class="s2">#End of Drop1</span><span class="s1"> 
+ 
+    entry1 = Entry(root) 
+    entry1.pack(side=TOP) 
+    entry1.insert(</span><span class="s4">0</span><span class="s1">, </span><span class="s3">&quot;Answer here!&quot;</span><span class="s1">) </span><span class="s2">#Tells user where to input</span><span class="s1"> 
+    </span><span class="s2">#End of Entry1</span><span class="s1"> 
+ 
+    drop2 = OptionMenu(root, initialOpt2, *OPTIONS2, command=OptionMenu_SelectionEvent2) 
+    drop2.pack() </span><span class="s2">#End of Drop2</span><span class="s1"> 
+ 
+    entry2 = Entry(root) 
+    entry2.pack(side=TOP) 
+    entry2.insert(</span><span class="s4">0</span><span class="s1">, </span><span class="s3">&quot;Answer here!&quot;</span><span class="s1">) 
+    </span><span class="s2">#End of Entry2</span><span class="s1"> 
+ 
+    button1 = Button(root, text=</span><span class="s3">'Submit'</span><span class="s1">, command=done_and_done) 
+    button1.pack() 
+    </span><span class="s2">#End</span><span class="s1"> 
+ 
+    mainloop() </span><span class="s2">#Loop window</span><span class="s1"> 
+window()</span></pre>
+</body>
+</html>
